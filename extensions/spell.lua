@@ -85,8 +85,10 @@ function SpellListener:UNIT_SPELLCAST_SENT(unit, target, castguid, spellID)
   castedguid = castguid.ToString
 
   if is_queue_spell then
+    local spell = WoWSpell(spellID)
+
     for k, q in pairs(queue) do
-      if q.ability.Id == spellID then
+      if q.ability == spell or q.ability.OverrideId == spell.Id then
         table.remove(queue, k)
         is_queue_spell = false
       end

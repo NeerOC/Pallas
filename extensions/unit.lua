@@ -194,6 +194,10 @@ function WoWUnit:AngleToXY(x1, y1, x2, y2)
   return math.deg(diff)
 end
 
+function WoWUnit:GetScreenPosition()
+  return World2Screen(self.Position)
+end
+
 function WoWUnit:GetSpellCast()
   local spell = WoWSpell(0)
 
